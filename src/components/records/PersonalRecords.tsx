@@ -71,7 +71,12 @@ export default function PersonalRecords({ onUpdate, initialRecords }: PersonalRe
                 type="date"
                 value={record.date || ''}
                 onChange={(e) => handleRecordChange(index, 'date', e.target.value)}
-                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] bg-white"
+                className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-blue)] bg-white text-[var(--text-primary)] [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-date-and-time-value]:text-left"
+                style={{ 
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none',
+                  appearance: 'none'
+                }}
               />
             </div>
           </div>
