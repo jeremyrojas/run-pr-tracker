@@ -131,40 +131,65 @@ export default function Home() {
   if (!userId) return null;
 
   return (
-    <main className="min-h-screen p-8 flex justify-center items-center bg-gray-50">
-      <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-8">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Run PR Tracker</h1>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 focus:outline-none"
-          >
-            Logout
-          </button>
-        </div>
-        
-        <div className="flex flex-col items-center space-y-8">
+    <main className="min-h-screen p-4 md:p-8 bg-[var(--background)]">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-[var(--primary-blue)] to-[var(--secondary-blue)] text-transparent bg-clip-text mb-2">
+          Run PR Tracker
+        </h1>
+        <p className="text-[var(--text-secondary)] text-lg font-medium">
+          Track your Personal Records
+        </p>
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-col items-center mb-8">
           <ProfilePicture
             userId={userId}
             initialUrl={profile.profile_image_url || undefined}
             onUpdate={(url) => handleProfileUpdate({ profile_image_url: url })}
           />
-          <UserInfo
-            initialData={profile}
-            onUpdate={handleProfileUpdate}
-          />
-          <PersonalRecords
-            initialRecords={records}
-            onUpdate={setRecords}
-          />
-          
-          <button 
-            onClick={handleSave}
-            disabled={loading}
-            className="w-full max-w-md bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? 'Saving...' : 'Save'}
-          </button>
+          <div className="mt-4 text-center">
+            <h2 className="text-xl font-semibold">{profile.name || 'Runner'}</h2>
+            <p className="text-[var(--text-secondary)]">{profile.location || 'Add your location'}</p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div className="bg-[var(--card-background)] rounded-2xl shadow-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
+            <UserInfo
+              initialData={profile}
+              onUpdate={handleProfileUpdate}
+            />
+          </div>
+
+          <div className="bg-[var(--card-background)] rounded-2xl shadow-lg p-6">
+            <PersonalRecords
+              initialRecords={records}
+              onUpdate={setRecords}
+            />
+          </div>
+
+          <div className="space-y-4">
+            <button 
+              onClick={handleSave}
+              disabled={loading}
+              className="w-full bg-[var(--primary-blue)] text-white py-4 px-6 rounded-xl font-semibold
+                       hover:bg-[var(--secondary-blue)] transition-colors duration-200
+                       disabled:opacity-50 disabled:cursor-not-allowed
+                       shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              {loading ? 'Saving...' : 'Save Changes'}
+            </button>
+            
+            <button
+              onClick={handleLogout}
+              className="w-full text-[var(--text-secondary)] py-2 px-4 text-sm hover:text-[var(--text-primary)] 
+                       transition-colors rounded-lg hover:bg-gray-100 font-medium"
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
       </div>
     </main>
