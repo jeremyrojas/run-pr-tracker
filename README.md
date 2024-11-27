@@ -45,68 +45,6 @@ A modern web application for runners to track their personal records (PRs) acros
 
 Visit [https://run-pr-tracker.vercel.app](https://run-pr-tracker.vercel.app) to see the app in action.
 
-## 💻 Local Development
-
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn package manager
-- Supabase account
-
-### Setup Instructions
-
-1. Clone the repository:
-```bash
-git clone https://github.com/YOUR_USERNAME/run-pr-tracker.git
-cd run-pr-tracker
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env.local` file with your Supabase credentials:
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-4. Run the development server:
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Database Setup
-
-Execute these SQL commands in your Supabase SQL editor:
-
-```sql
--- Create profiles table
-CREATE TABLE profiles (
-    id UUID REFERENCES auth.users(id) PRIMARY KEY,
-    name TEXT,
-    location TEXT,
-    bio TEXT,
-    profile_image_url TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
-);
-
--- Create personal_records table
-CREATE TABLE personal_records (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users(id) NOT NULL,
-    distance TEXT NOT NULL,
-    time TEXT NOT NULL,
-    location TEXT,
-    date DATE,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
-);
-```
-
 ## 📱 Usage
 
 1. **Sign Up/Login**:
