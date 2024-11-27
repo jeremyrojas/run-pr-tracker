@@ -40,9 +40,6 @@ export default function PersonalRecords({ onUpdate, initialRecords }: PersonalRe
     <div className="w-full space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">Personal Records</h2>
-        <div className="text-sm text-[var(--text-secondary)]">
-          Track your best times
-        </div>
       </div>
 
       <div className="space-y-4">

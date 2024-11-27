@@ -136,7 +136,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold bg-gradient-to-r from-[var(--primary-blue)] to-[var(--secondary-blue)] text-transparent bg-clip-text mb-2">
           Run PR Tracker
         </h1>
-        <p className="text-[var(--text-secondary)] text-lg font-medium">
+        <p className="text-[var(--text-secondary)] text-base font-medium">
           Track your Personal Records
         </p>
       </div>
@@ -150,7 +150,6 @@ export default function Home() {
           />
           <div className="mt-4 text-center">
             <h2 className="text-xl font-semibold">{profile.name || 'Runner'}</h2>
-            <p className="text-[var(--text-secondary)]">{profile.location || 'Add your location'}</p>
           </div>
         </div>
 
